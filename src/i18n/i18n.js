@@ -1,12 +1,11 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';// 它用於檢測瀏覽器中的語言設置
-import 'intl-pluralrules';// https://stackoverflow.com/questions/70493788/i18nextpluralresolver-your-environment-seems-not-to-be-intl-api-compatible-u
 // json file
-import commonTW from '../../app/locales/zh-TW/common.json';
-import commonUS from '../../app/locales/zh-US/common.json';
-import toDoListTW from '../../app/locales/zh-TW/toDoList.json';
-import toDoListUS from '../../app/locales/zh-TW/toDoList.json';
+import commonTW from '../locales/zh-TW/common.json';
+import commonUS from '../locales/zh-US/common.json';
+import toDoListTW from '../locales/zh-TW/toDoList.json';
+import toDoListUS from '../locales/zh-US/toDoList.json';
 
 /**
  * 參考
@@ -42,7 +41,7 @@ i18n
         // files
         ns: [
             'common', 
-            'htoDoListome',
+            'toDoList',
         ],
         resources: languageResources,
         interpolation: {

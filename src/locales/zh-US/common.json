@@ -8,6 +8,8 @@
         "PAGE_5": "Page5"
     },
     "NAV_BAR": {
-        "LANGUAGE": "Language"
+        "LANGUAGE": "Language : ",
+        "TW": "Chinese",
+        "US": "English"
     }
 }

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import '../Css/Navbar.css'
 import ViewPortWrapper from '../Components/Wrapper/ViewPortWrapper'
 
 export default function ToDoList() {
