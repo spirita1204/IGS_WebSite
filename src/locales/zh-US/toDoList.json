@@ -1,3 +1,7 @@
 {
-    
+    "TO_DO_LIST": "To Do List",
+    "PLEASE_ENTER_TODO_ITEM": "Please enter a todo item",
+    "ALL": "All",
+    "COMPLETED": "Completed",
+    "UNCOMPLETED": "Uncompleted"
 }
