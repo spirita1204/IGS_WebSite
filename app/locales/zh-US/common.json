@@ -1,0 +1,13 @@
+{
+    "IGS_TITLE": "IGS Project",
+    "SIDE_BAR": {
+        "TO_DO_LIST": "To Do List",
+        "PAGE_2": "Page2",
+        "PAGE_3": "Page3",
+        "PAGE_4": "Page4",
+        "PAGE_5": "Page5"
+    },
+    "NAV_BAR": {
+        "LANGUAGE": "Language"
+    }
+}
