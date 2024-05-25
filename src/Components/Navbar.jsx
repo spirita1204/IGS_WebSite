@@ -25,12 +25,13 @@ const Navbar = () => {
                     <div className="container-fluid">
                         <ul className="nav navbar-nav navbar-right">
                             <li>
-                                <p className="select-wrapper">
-                                    {t('NAV_BAR.LANGUAGE')}
+                                <p className="select-wrapper" style={{marginTop: '10px'}}>
+                                    <span style={{ fontSize: '14px' }}>{t('NAV_BAR.LANGUAGE')}</span>
                                     <select
                                         className="custom-select"
                                         value={selectedLanguage}
                                         onChange={handleLanguageChange}
+                                        style={{ fontSize: '14px' }}
                                     >
                                         {/* 中文(繁體) */}
                                         <option value="zh-TW">{t('NAV_BAR.TW')}</option>

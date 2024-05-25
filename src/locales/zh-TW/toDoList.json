@@ -3,5 +3,6 @@
     "PLEASE_ENTER_TODO_ITEM": "請輸入待辦事項",
     "ALL": "全部",
     "COMPLETED": "已完成",
-    "UNCOMPLETED": "待完成"
+    "UNCOMPLETED": "待完成",
+    "ITEMS": " 個待完成項目"
 }

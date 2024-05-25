@@ -3,5 +3,6 @@
     "PLEASE_ENTER_TODO_ITEM": "Please enter a todo item",
     "ALL": "All",
     "COMPLETED": "Completed",
-    "UNCOMPLETED": "Uncompleted"
+    "UNCOMPLETED": "Uncompleted",
+    "ITEMS": " pending tasks"
 }
