@@ -76,7 +76,7 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
                         <div className="list_footer">
                             {/* 個待完成項目 */}
                             <p>{toDoList.filter(item => !item.checked).length + t('ITEMS')}</p>
-                            <a href="#">清除已完成項目</a>
+                            <a href="#">{t('SORT_BY')}</a>
                         </div>
                     </div>
                 </div>
