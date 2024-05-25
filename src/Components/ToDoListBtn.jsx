@@ -1,19 +1,36 @@
-import React, { Fragment, useReducer, useState } from 'react'
+import React, { Fragment, useReducer, useState, useCallback } from 'react'
 import '../Css/ToDoListBtn.css'
 import { useTranslation } from 'react-i18next';
 
-const ToDoListBtn = () => {
+const ToDoListBtn = ({ onChange, value, addItem }) => {
     const { t } = useTranslation('toDoList');
-
+    // 控制選擇狀態選擇
     const [status, setStatus] = useState(0);
+
+    // 
+    const [toDoList, setToDoList] = useState([]);
+
+    const addToDoList = useCallback((item) => {
+        setToDoList([...toDoList, item]);
+    }, [toDoList]);
 
     return (
         <Fragment>
             <div style={{ margin: '0 auto', width: '80%' }}>
                 <h1>{t('TO_DO_LIST')}</h1>
                 <div className="card input">
-                    <input type="text" placeholder={t('PLEASE_ENTER_TODO_ITEM')} />
-                    <a href="#" className="btn_add">+</a>
+                    <input
+                        type="text"
+                        placeholder={t('PLEASE_ENTER_TODO_ITEM')}
+                        onChange={onChange}
+                        value={value}
+                        maxLength={20}
+                    />
+                    <button
+                        className="btn_add"
+                        style={{ color: 'white' }}
+                        onClick={() => addToDoList(addItem)}
+                    >+</button >
                 </div>
                 <div className="card card_list">
                     <ul className="tab">
