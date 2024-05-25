@@ -16,7 +16,6 @@ export default function ToDoList() {
             {/* 代辦事項  */}
             <ToDoListBtn
               onChange={(e) => {
-                console.log(e.target.value)
                 setInputValue(e.target.value)
               }}
               value={inputValue}
