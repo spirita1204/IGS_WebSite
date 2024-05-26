@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useMemo, useState } from 'react'
 import '../Css/ToDoListBtn.css'
 import { useTranslation } from 'react-i18next';
 import { HiArrowDown, HiArrowUp } from "react-icons/hi";
@@ -13,6 +13,15 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
     const handleSort = () => {
         setDir(dir * -1);
     }
+    // 待完成項目數量
+    const uncompletedItemsCount = useMemo(() => {
+        const uncompletedItems = toDoList.filter(item => !item.checked).length;
+        if (uncompletedItems === 0 || uncompletedItems === 1) {
+            return uncompletedItems + t('ITEM');
+        } else {
+            return uncompletedItems + t('ITEMS');
+        }
+    }, [t, toDoList]);
 
     return (
         <Fragment>
@@ -65,7 +74,7 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
                         </ul>
                         <div className="list_footer">
                             {/* 個待完成項目 */}
-                            <p style={{ margin: '0 5px' }}>{toDoList.filter(item => !item.checked).length + t('ITEMS')}</p>
+                            <p style={{ margin: '0 5px' }}>{uncompletedItemsCount}</p>
                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                 <p
                                     style={{ margin: '0 5px', fontWeight: 'bold' }}
@@ -94,12 +103,12 @@ const ToDoListTextGrp = ({ toDoList, type, removeToDoList, editToDoList, sort })
         toDoListFiltered = toDoList.filter(item => item.checked);
     }
 
-    if(sort === 1) {// 新到舊排序
+    if (sort === 1) {// 新到舊排序
         toDoListFiltered = toDoListFiltered.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else {// 舊到新排序
         toDoListFiltered = toDoListFiltered.sort((a, b) => new Date(a.date) - new Date(b.date));
     }
-    
+
     return (
         <Fragment>
             {toDoListFiltered.map((item, index) => {

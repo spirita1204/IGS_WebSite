@@ -4,6 +4,7 @@
     "ALL": "全部",
     "COMPLETED": "已完成",
     "UNCOMPLETED": "待完成",
+    "ITEM": " 個待完成項目",
     "ITEMS": " 個待完成項目",
     "SORT_BY": "排序"
 }

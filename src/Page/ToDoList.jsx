@@ -21,14 +21,23 @@ export default function ToDoList() {
   const addToDoList = useCallback((item) => {
     // 驗證輸入值
     if (validateInput(item.title)) {
-      setToDoList([...toDoList, item]);
+      const data = [...toDoList, item];
+      // 將資料存到LocalStorage
+      localStorage.setItem("toDoList", JSON.stringify(data));
+      // 新增代辦事項
+      setToDoList(data);
+      // 清空輸入值
       setInputValue('');
     }
   }, [toDoList]);
 
   // 刪除代辦事項
   const removeToDoList = useCallback((index) => {
-    setToDoList(toDoList.filter((_, i) => i !== index));
+    const data = toDoList.filter((_, i) => i !== index);
+    // 將資料存到LocalStorage
+    localStorage.setItem("toDoList", JSON.stringify(data));
+    // 刪除代辦事項
+    setToDoList(data);
   }, [toDoList]);
 
   // 編輯代辦事項(未完成, 已完成)
@@ -39,11 +48,23 @@ export default function ToDoList() {
       }
       return item;
     });
+    // 將資料存到LocalStorage
+    localStorage.setItem("toDoList", JSON.stringify(newList));
+    // 編輯代辦事項
     setToDoList(newList);
   }, [toDoList]);
 
+  // 使用localStorage資料
   useEffect(() => {
-    // 監聽enter時自動新增代辦事項
+    let data = JSON.parse(localStorage.getItem("toDoList"));
+    // 存在localStorage資料
+    if (data) {
+      setToDoList(data);
+    }
+  }, []);
+
+  // 監聽enter時自動新增代辦事項
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.keyCode === 13) {// Enter鍵觸發
         addToDoList({
