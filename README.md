@@ -96,7 +96,7 @@ localStorage.removeItem('key')：移除指定key的資料
 localStorage.clear()：清除所有localStorage的資料
 ```
 
-addLstener  “Enter” 鍵 增加使用體驗
+addLstener  “Enter” 鍵自動新增 增加使用體驗
 
 ```java
   useEffect(() => {
