@@ -3,12 +3,12 @@ Demo Link : https://igs-website.onrender.com
 <div style="display:flex; flex-wrap: wrap;">
     <img src="./public/img/螢幕擷取畫面2024-05-26153023.png" alt="plot" style="width:300px; margin: 10px;">
     <img src="./public/img/螢幕擷取畫面2024-05-26153035.png" alt="plot" style="width:300px; margin: 10px;">
-    <img src="./public/img/螢幕擷取畫面2024-05-26153045.png" alt="plot" style="width:300px; margin: 10px;">
 </div>
 
 <div style="display:flex; flex-wrap: wrap;">
     <img src="./public/img/螢幕擷取畫面2024-05-26153050.png" alt="plot" style="width:300px; margin: 10px;">
     <img src="./public/img/螢幕擷取畫面2024-05-26153101.png" alt="plot" style="width:300px; margin: 10px;">
+    <img src="./public/img/螢幕擷取畫面2024-05-26153045.png" alt="plot" style="width:300px; margin: 10px;">
 </div>
 
 專案架構圖
