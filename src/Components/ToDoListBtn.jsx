@@ -36,18 +36,18 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
                 {/* 切換代辦事項 */}
                 <div className="card card_list">
                     <ul className="tab">
-                        <li
+                        <lii
                             className={(status === 0) ? "active" : ''}
                             onClick={() => setStatus(0)}
-                        >{t('ALL')}</li>
-                        <li
+                        >{t('ALL')}</lii>
+                        <lii
                             className={(status === 1) ? "active" : ''}
                             onClick={() => setStatus(1)}
-                        >{t('UNCOMPLETED')}</li>
-                        <li
+                        >{t('UNCOMPLETED')}</lii>
+                        <lii
                             className={(status === 2) ? "active" : ''}
                             onClick={() => setStatus(2)}
-                        >{t('COMPLETED')}</li>
+                        >{t('COMPLETED')}</lii>
                     </ul>
                     <div className="cart_content">
                         <ul className="list">

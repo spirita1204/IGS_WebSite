@@ -111,14 +111,15 @@ input[type="text"] {
 
 .tab {
     display: flex;
+    padding: 0; /* Remove default padding */
     text-align: center;
     color: #9f9a91;
     font-size: 14px;
-    li {    
+    lii {    
         padding: 1rem;
         width: 100%;
         border-bottom: 2px solid #efefef;
-
+        
         &.active {
             border-bottom: 2px solid #333;
             color: #333;
