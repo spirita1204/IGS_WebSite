@@ -25,7 +25,8 @@ html {
 
 .custom-heading {
     font-family: 'Baloo Tamma 2', sans-serif;
-    font-weight: 600; /* or 700 for bolder text */
+    font-weight: 600;
+    /* or 700 for bolder text */
     color: #ffffff;
     text-align: center;
     margin-top: 2rem;
@@ -48,6 +49,7 @@ h1 {
     letter-spacing: 0.5rem;
     font-weight: bold;
     color: #ffffff;
+
     @media (max-width: 575px) {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -111,13 +113,14 @@ input[type="text"] {
 
 .tab {
     display: flex;
-    padding: 0; /* Remove default padding */
+    padding: 0;
+    /* Remove default padding */
     text-align: center;
     color: #9f9a91;
     font-size: 14px;
 }
 
-.tab li {    
+.tab li {
     padding: 1rem;
     list-style: none;
     width: 100%;
@@ -139,41 +142,43 @@ input[type="text"] {
     }
 }
 
-.list {
-    li {
-        position: relative;
-        padding-right: 2rem;
+.list li {
+    position: relative;
+    padding-right: 2rem;
+}
 
-        @media (max-width: 575px) {
-            padding-right: 0;
-        }
-
-        a.delete {
-            position: absolute;
-            opacity: 0;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            text-decoration: none;
-            color: #333;
-            display: block;
-            width: 1rem;
-            height: 1rem;
-            background: #000;
-            background-image: url("https://i.imgur.com/7Q4RjFx.jpg");
-            background-size: contain;
-
-            @media (max-width: 575px) {
-                opacity: 1;
-                width: 12px;
-                height: 12px;
-            }
-        }
-
-        &:hover a.delete {
-            opacity: 1;
-        }
+@media (max-width: 575px) {
+    .list li {
+        padding-right: 0;
     }
+}
+
+.list li a.delete {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #333;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background: #000;
+    background-image: url("https://i.imgur.com/7Q4RjFx.jpg");
+    background-size: contain;
+}
+
+@media (max-width: 575px) {
+    .list li a.delete {
+        opacity: 1;
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.list li:hover a.delete {
+    opacity: 1;
 }
 
 .list_footer {
@@ -182,13 +187,15 @@ input[type="text"] {
     justify-content: space-between;
     padding: 1.5rem 2rem 1rem 0.5rem;
     font-size: 14px;
+}
 
-    a {
-        color: #9f9a91;
-        text-decoration: none;
-    }
+.list_footer a {
+    color: #9f9a91;
+    text-decoration: none;
+}
 
-    @media (max-width: 575px) {
+@media (max-width: 575px) {
+    .list_footer {
         padding: 1.5rem 0 1rem 0.5rem;
     }
 }
@@ -200,73 +207,72 @@ input[type="text"] {
     display: block;
     padding-left: 44px;
     cursor: pointer;
-
-    div {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 1rem 0;
-        border-bottom: 1px solid #eee;
-        line-height: 1.5;
-    }
-
-    input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        opacity: 0;
-        cursor: pointer;
-        height: 100%;
-        width: 100%;
-        margin: 0;
-    }
-
-    div::before {
-        content: "";
-        position: absolute;
-        left: 0.5rem;
-        top: 50%;
-        transform: translateY(-50%) scale(1);
-        height: 20px;
-        width: 20px;
-        border-radius: 5px;
-        border: 1px solid #333;
-        pointer-events: none;
-        transition: 0.3s ease;
-    }
-
-    div::after {
-        content: "";
-        position: absolute;
-        left: 14px;
-        top: 27%;
-        transform: rotate(45deg);
-        height: 15px;
-        width: 0.5rem;
-        border-radius: 1px;
-        border-bottom: 3px solid #ffd370;
-        border-right: 3px solid #ffd370;
-        pointer-events: none;
-        opacity: 0;
-        transition: 0.3s ease;
-    }
-
-    input:checked {
-        ~ div {
-            color: #9f9a91;
-            text-decoration: line-through;
-        }
-
-        ~ div::before {
-            border-color: transparent;
-            transform: translateY(-50%) scale(0);
-        }
-
-        ~ div::after {
-            opacity: 1;
-        }
-    }
 }
+
+.checkbox div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+}
+
+.checkbox input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.checkbox div::before {
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+.checkbox div::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 27%;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 0.5rem;
+    border-radius: 1px;
+    border-bottom: 3px solid #ffd370;
+    border-right: 3px solid #ffd370;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.checkbox input:checked~div {
+    color: #9f9a91;
+    text-decoration: line-through;
+}
+
+.checkbox input:checked~div::before {
+    border-color: transparent;
+    transform: translateY(-50%) scale(0);
+}
+
+.checkbox input:checked~div::after {
+    opacity: 1;
+}
+
 
 /* Adjust padding for smaller screens */
 @media (max-width: 575px) {
