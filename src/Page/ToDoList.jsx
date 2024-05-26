@@ -99,7 +99,7 @@ export default function ToDoList() {
                   title: inputValue,
                   checked: false,
                   uuid: uuidv4(),
-                  createdAt: new Date().toTimeString(),
+                  createdAt: new Date().toLocaleString(),
                   date: new Date().toString()
                 });
               }}
