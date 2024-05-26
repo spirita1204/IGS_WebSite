@@ -115,19 +115,21 @@ input[type="text"] {
     text-align: center;
     color: #9f9a91;
     font-size: 14px;
-    li {    
-        padding: 1rem;
-        list-style: none;
-        width: 100%;
-        border-bottom: 2px solid #efefef;
-        
-        &.active {
-            border-bottom: 2px solid #333;
-            color: #333;
-            font-weight: bold;
-        }
-    }
 }
+
+.tab li {    
+    padding: 1rem;
+    list-style: none;
+    width: 100%;
+    border-bottom: 2px solid #efefef;
+}
+
+.tab li.active {
+    border-bottom: 2px solid #333;
+    color: #333;
+    font-weight: bold;
+}
+
 
 .cart_content {
     padding: 0.5rem 1rem 1rem 1rem;
