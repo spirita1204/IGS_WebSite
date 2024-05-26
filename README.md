@@ -1,4 +1,4 @@
-Demo Link : https://igs-website.onrender.com
+Demo Link : https://igs-website.onrender.com (Render.com雲端部屬 免費版 啟動要稍等片刻50秒左右)
 
 <div style="display:flex; flex-wrap: wrap;">
     <img src="./public/img/螢幕擷取畫面2024-05-26153023.png" alt="plot" style="width:300px; margin: 10px;">
