@@ -17,7 +17,7 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
     return (
         <Fragment>
             <div style={{ margin: '0 auto', width: '80%' }}>
-                <h1>{t('TO_DO_LIST')}</h1>
+                <h1 className="custom-heading">{t('TO_DO_LIST')}</h1>
                 {/* 新增代辦事項 */}
                 <div className="card input">
                     <input
