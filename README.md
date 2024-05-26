@@ -21,11 +21,11 @@ src
     ├── Sidebar.jsx
     └── ToDiListBtn.jsx // 代辦事項組件
 ├── Css 樣式
-		├── NavBar.css  
-		├── SideBar.css
-		└── ToDoListBtn.css
+    ├── NavBar.css  
+    ├── SideBar.css
+    └── ToDoListBtn.css
 ├── i18n // 多語系設定檔
-		└── i18n.js 
+    └── i18n.js 
 ├── locales // 多語系
     ├── [zh-TW] // 根據語系做切包
         ├── common.json // 共用組件多語系
@@ -34,8 +34,8 @@ src
         ├── common.json
         └── toDoList.json	
 ├── Pages // 畫面
-		├── App.jsx // 共用畫面 路由
-		└── ToDoList.jsx // 代辦事項畫面     
+    ├── App.jsx // 共用畫面 路由
+    └── ToDoList.jsx // 代辦事項畫面     
 └── index.js // 根結點(進入點)
 ```
 
