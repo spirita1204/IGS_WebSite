@@ -56,7 +56,7 @@ export default function ToDoList() {
 
   // 使用localStorage資料
   useEffect(() => {
-    let data = JSON.parse(localStorage.getItem("toDoList"));
+    const data = JSON.parse(localStorage.getItem("toDoList"));
     // 存在localStorage資料
     if (data) {
       setToDoList(data);
