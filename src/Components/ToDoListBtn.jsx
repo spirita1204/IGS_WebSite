@@ -1,11 +1,18 @@
 import React, { Fragment, useState } from 'react'
 import '../Css/ToDoListBtn.css'
 import { useTranslation } from 'react-i18next';
+import { HiArrowDown, HiArrowUp } from "react-icons/hi";
 
 const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editToDoList }) => {
     const { t } = useTranslation('toDoList');
     // 控制選擇狀態選擇
     const [status, setStatus] = useState(0);
+    // 切換排序
+    const [dir, setDir] = useState(1);
+    // 排序
+    const handleSort = () => {
+        setDir(dir * -1);
+    }
 
     return (
         <Fragment>
@@ -45,38 +52,29 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
                     <div className="cart_content">
                         <ul className="list">
                             {/* 代辦事項清單 */}
-                            {/* 全部 */}
-                            {status === 0 &&
-                                <ToDoListTextGrp
-                                    toDoList={toDoList}
-                                    type="all"
-                                    removeToDoList={removeToDoList}
-                                    editToDoList={editToDoList}
-                                />
-                            }
-                            {/* 未完成 */}
-                            {status === 1 &&
-                                <ToDoListTextGrp
-                                    toDoList={toDoList}
-                                    type="uncompleted"
-                                    removeToDoList={removeToDoList}
-                                    editToDoList={editToDoList}
-                                />
-                            }
-                            {/* 已完成 */}
-                            {status === 2 &&
-                                <ToDoListTextGrp
-                                    toDoList={toDoList}
-                                    type="completed"
-                                    removeToDoList={removeToDoList}
-                                    editToDoList={editToDoList}
-                                />
-                            }
+                            {/* 全部 0*/}
+                            {/* 未完成 1*/}
+                            {/* 已完成 2*/}
+                            <ToDoListTextGrp
+                                toDoList={toDoList}
+                                type={status === 0 ? "all" : status === 1 ? "uncompleted" : "completed"}
+                                removeToDoList={removeToDoList}
+                                editToDoList={editToDoList}
+                                sort={dir}
+                            />
                         </ul>
                         <div className="list_footer">
                             {/* 個待完成項目 */}
-                            <p>{toDoList.filter(item => !item.checked).length + t('ITEMS')}</p>
-                            <a href="#">{t('SORT_BY')}</a>
+                            <p style={{ margin: '0 5px' }}>{toDoList.filter(item => !item.checked).length + t('ITEMS')}</p>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <p
+                                    style={{ margin: '0 5px', fontWeight: 'bold' }}
+                                    onClick={handleSort}
+                                >{t('SORT_BY')}</p>
+                                {/* 控制箭頭方向 作用排序(新增時間) */}
+                                {dir === -1 && <HiArrowDown />}
+                                {dir === 1 && <HiArrowUp />}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,7 +83,7 @@ const ToDoListBtn = ({ onChange, value, onClick, toDoList, removeToDoList, editT
     )
 }
 
-const ToDoListTextGrp = ({ toDoList, type, removeToDoList, editToDoList }) => {
+const ToDoListTextGrp = ({ toDoList, type, removeToDoList, editToDoList, sort }) => {
     let toDoListFiltered = [];
 
     if (type === 'all') {
@@ -96,14 +94,20 @@ const ToDoListTextGrp = ({ toDoList, type, removeToDoList, editToDoList }) => {
         toDoListFiltered = toDoList.filter(item => item.checked);
     }
 
+    if(sort === 1) {// 新到舊排序
+        toDoListFiltered = toDoListFiltered.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else {// 舊到新排序
+        toDoListFiltered = toDoListFiltered.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+    
     return (
         <Fragment>
             {toDoListFiltered.map((item, index) => {
-                console.log(item, 'item');
                 return (
                     <ToDoListText
                         key={index}
                         text={item.title}
+                        createdAt={item.createdAt}
                         removeToDoList={removeToDoList}
                         index={index}
                         checked={item.checked}
@@ -114,7 +118,8 @@ const ToDoListTextGrp = ({ toDoList, type, removeToDoList, editToDoList }) => {
         </Fragment>
     );
 }
-const ToDoListText = ({ text, removeToDoList, index, checked, onChange }) => {
+
+const ToDoListText = ({ text, removeToDoList, index, checked, onChange, createdAt }) => {
     return (
         <li>
             <label className="checkbox">
@@ -123,7 +128,10 @@ const ToDoListText = ({ text, removeToDoList, index, checked, onChange }) => {
                     checked={checked}
                     onChange={onChange}
                 />
-                <span>{text}</span>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span>{text}</span>
+                    <span>{createdAt}</span>
+                </div>
             </label>
             <a href="#" className="delete" onClick={() => removeToDoList(index)} />
         </li>

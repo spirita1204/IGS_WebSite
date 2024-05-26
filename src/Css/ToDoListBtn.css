@@ -190,15 +190,13 @@ input[type="text"] {
     padding-left: 44px;
     cursor: pointer;
 
-    span {
-        display: block;
+    div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
         padding: 1rem 0;
         border-bottom: 1px solid #eee;
         line-height: 1.5;
-
-        @media (max-width: 575px) {
-            padding-right: 1rem;
-        }
     }
 
     input {
@@ -207,13 +205,12 @@ input[type="text"] {
         left: 0;
         opacity: 0;
         cursor: pointer;
-        display: block;
         height: 100%;
         width: 100%;
         margin: 0;
     }
 
-    span::before {
+    div::before {
         content: "";
         position: absolute;
         left: 0.5rem;
@@ -227,7 +224,7 @@ input[type="text"] {
         transition: 0.3s ease;
     }
 
-    span::after {
+    div::after {
         content: "";
         position: absolute;
         left: 14px;
@@ -244,18 +241,25 @@ input[type="text"] {
     }
 
     input:checked {
-        ~span {
+        ~ div {
             color: #9f9a91;
             text-decoration: line-through;
         }
 
-        ~span::before {
+        ~ div::before {
             border-color: transparent;
             transform: translateY(-50%) scale(0);
         }
 
-        ~span::after {
+        ~ div::after {
             opacity: 1;
         }
+    }
+}
+
+/* Adjust padding for smaller screens */
+@media (max-width: 575px) {
+    .checkbox div {
+        padding-right: 1rem;
     }
 }

@@ -34,7 +34,6 @@ export default function ToDoList() {
 
   // 編輯代辦事項(未完成, 已完成)
   const editToDoList = useCallback((uuid) => {
-    console.log(uuid, 'uuid');
     const newList = toDoList.map((item) => {
       if (item.uuid === uuid) {
         item.checked = !item.checked;
@@ -48,7 +47,13 @@ export default function ToDoList() {
     // 監聽enter時自動新增代辦事項
     const handleKeyDown = (event) => {
       if (event.keyCode === 13) {// Enter鍵觸發
-        addToDoList({ title: inputValue, checked: false, uuid: uuidv4() });
+        addToDoList({
+          title: inputValue,
+          checked: false,
+          uuid: uuidv4(),
+          createdAt: new Date().toLocaleString(),
+          date: new Date().toString()
+        });
       }
     }
     document.addEventListener('keydown', handleKeyDown);
@@ -70,7 +75,13 @@ export default function ToDoList() {
                 setInputValue(e.target.value)
               }}
               onClick={() => {
-                addToDoList({ title: inputValue, checked: false, uuid: uuidv4() });
+                addToDoList({
+                  title: inputValue,
+                  checked: false,
+                  uuid: uuidv4(),
+                  createdAt: new Date().toTimeString(),
+                  date: new Date().toString()
+                });
               }}
               value={inputValue}
               toDoList={toDoList}
