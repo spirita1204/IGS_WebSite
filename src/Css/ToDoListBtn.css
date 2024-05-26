@@ -115,8 +115,9 @@ input[type="text"] {
     text-align: center;
     color: #9f9a91;
     font-size: 14px;
-    lii {    
+    li {    
         padding: 1rem;
+        list-style: none;
         width: 100%;
         border-bottom: 2px solid #efefef;
         
