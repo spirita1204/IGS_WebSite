@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+專案架構圖
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```java
+src
+├── Components // 組件
+    ├── [Wrapper]
+        └── ViewPortWrapper.jsx // 重複Wrapper拉出共用
+    ├── Navbar.jsx 
+    ├── Sidebar.jsx
+    └── ToDiListBtn.jsx // 代辦事項組件
+├── Css 樣式
+		├── NavBar.css  
+		├── SideBar.css
+		└── ToDoListBtn.css
+├── i18n // 多語系設定檔
+		└── i18n.js 
+├── locales // 多語系
+    ├── [zh-TW] // 根據語系做切包
+        ├── common.json // 共用組件多語系
+        └── toDoList.json	// 代辦事項多語系
+    └── [zh-US]
+        ├── common.json
+        └── toDoList.json	
+├── Pages // 畫面
+		├── App.jsx // 共用畫面 路由
+		└── ToDoList.jsx // 代辦事項畫面     
+└── index.js // 根結點(進入點)
+```
 
-## Available Scripts
+建置 啟動 build
 
-In the project directory, you can run:
+```java
+npx create-react-app igs_simple_website_project
+npm start
+npm run build
+```
 
-### `npm start`
+頁面路由(頁面錯誤url redirect) 避免無效訪問
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```java
+npm i react-router-dom
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<Routes>
+    {/* 當初使載入 重定向到ToDoList */}
+    <Route path="/" element={<Navigate to="/ToDoList" />} />
+    {/* 設定路由 */}
+    <Route path='/ToDoList' element={<ToDoList />}></Route>
+    {/* 匹配到未定義的路徑時，自動重定向 */}
+    <Route path="*" element={<Navigate to="/" />}/>
+    ...
+    ...
+</Routes>
+```
 
-### `npm test`
+多語系
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```java
+npm i react-i18next i18next
+npm i i18next-browser-languagedetector
 
-### `npm run build`
+const { t } = useTranslation('toDoList');
+t('COMPLETED')// 完成
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+uuid 作用於分辨每項代辦事項
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```java
+npm i uuid
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ addToDoList({
+     title: inputValue,
+     checked: false,
+     **uuid: uuidv4(),**
+     createdAt: new Date().toLocaleString(),
+     date: new Date().toString()
+ });
+```
 
-### `npm run eject`
+icon  控制排序方向
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```java
+npm i react-icons
+import { HiArrowDown, HiArrowUp  } from "react-icons/hi";
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+{/* 控制箭頭方向 作用排序(新增時間) */}
+{dir === -1 && <HiArrowDown />}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+LocalStorage 無後端 暫且keep資料在前端
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```java
+localStorage.setItem('key', 'value')：塞資料進去
+localStorage.getItem('key')：取得資料這個key的資料
+localStorage.key()：取得指定位置的key
+localStorage.removeItem('key')：移除指定key的資料
+localStorage.clear()：清除所有localStorage的資料
+```
 
-## Learn More
+addLstener  “Enter” 鍵 增加使用體驗
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```java
+  useEffect(() => {
+    // 監聽enter時自動新增代辦事項
+    const handleKeyDown = (event) => {
+      if (event.keyCode === 13) {// Enter鍵觸發
+        addToDoList({ title: inputValue, checked: false, uuid: uuidv4() });
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    // 移除監聽事件
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [addToDoList, inputValue]);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+雲端部屬 Render.com(free  mode startup may delay requests by 50 seconds)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```java
+https://igs-website.onrender.com
+```
