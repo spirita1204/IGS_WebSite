@@ -142,6 +142,7 @@ const ToDoListText = ({ text, removeToDoList, index, checked, onChange, createdA
                     <span>{createdAt}</span>
                 </div>
             </label>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, jsx-a11y/anchor-has-content*/}
             <a href="#" className="delete" onClick={() => removeToDoList(index)} />
         </li>
     );
